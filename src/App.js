@@ -9,15 +9,21 @@ import {
   Card,
 } from "@aws-amplify/ui-react";
 
-import {
-  NavBarSide 
- } from './ui-components';
+import { Menu, MenuItem } from '@aws-amplify/ui-react';
 
 function App({ signOut }) {
   return (
     <View className="App">
-      <NavBarSide />
-      <Button onClick={signOut}>Sign Out</Button>
+      <View style={{ padding: '1rem' }}>
+        <Menu>
+          <MenuItem>Option 1</MenuItem>
+          <MenuItem>Option 2</MenuItem>
+          <MenuItem>Option 3</MenuItem>
+        </Menu>
+      </View>
+      <View style={{ position: 'absolute', bottom: '1rem', left: '1rem' }}>
+        <Button onClick={signOut}>Sign Out</Button>
+      </View>
     </View>
   );
 }
