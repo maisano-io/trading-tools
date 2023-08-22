@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tradingtools-staging-115001-authRole",
+      "UnauthRoleArn": "arn:aws:iam::013345667632:role/amplify-tradingtools-staging-115001-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::013345667632:role/amplify-tradingtools-staging-115001-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-tradingtools-staging-115001-deployment",
+      "UnauthRoleName": "amplify-tradingtools-staging-115001-unauthRole",
+      "StackName": "amplify-tradingtools-staging-115001",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:013345667632:stack/amplify-tradingtools-staging-115001/06a53160-40e2-11ee-86c0-0265be4a4438",
+      "AmplifyAppId": "d2s4lb99i6dvdk"
+    },
+    "categories": {
+      "auth": {
+        "tradingtools": {}
+      }
+    }
+  }
+}
