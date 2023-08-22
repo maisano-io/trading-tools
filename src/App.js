@@ -9,13 +9,14 @@ import {
   Card,
 } from "@aws-amplify/ui-react";
 
+import {
+  NavBarSide 
+ } from './ui-components';
+
 function App({ signOut }) {
   return (
     <View className="App">
-      <Card>
-        <Image src={logo} className="App-logo" alt="logo" />
-        <Heading level={1}>We now have Auth!</Heading>
-      </Card>
+      <NavBarSide />
       <Button onClick={signOut}>Sign Out</Button>
     </View>
   );
