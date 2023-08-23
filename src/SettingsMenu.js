@@ -1,6 +1,6 @@
 import React from "react";
 
-const SettingsMenu = ({ isOpen, onClose }) => {
+const SettingsMenu = ({ isOpen, onClose, signOut }) => {
   return (
     <div
       style={{
@@ -17,9 +17,11 @@ const SettingsMenu = ({ isOpen, onClose }) => {
         zIndex: 1000,
       }}
     >
-      {/* Settings menu content */}
       <h2>Settings</h2>
       {/* Add your settings options here */}
+      <div style={{ position: 'absolute', bottom: '1rem', left: '1rem' }}>
+        <button onClick={signOut}>Sign Out</button>
+      </div>
       <button onClick={onClose}>Close</button>
     </div>
   );
