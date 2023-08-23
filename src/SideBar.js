@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FaCog } from "react-icons/fa";
+import "./SideBar.css"; // Import the CSS file for animations
 
 const SettingsPage = ({ onSignOut }) => {
   return (
@@ -84,9 +86,19 @@ const MainMenu = () => {
 
 const SideBar = ({ isSidebarOpen, onSignOut }) => {
   const [showSettings, setShowSettings] = useState(false);
+  const [isCogSpinning, setIsCogSpinning] = useState(false);
 
   const toggleSettings = () => {
     setShowSettings(!showSettings);
+  };
+
+  const handleCogClick = () => {
+    setIsCogSpinning(true);
+    toggleSettings(); // Open settings menu immediately
+
+    setTimeout(() => {
+      setIsCogSpinning(false);
+    }, 1000); // Stop spinning after a delay
   };
 
   return (
@@ -112,7 +124,7 @@ const SideBar = ({ isSidebarOpen, onSignOut }) => {
       <div
         style={{
           position: "absolute",
-          bottom: showSettings ? "-300px" : "20px",
+          bottom: showSettings ? "-300px" : "70px",
           right: "20px",
           left: "20px", // Add padding on the left side
           width: "260px", // Adjust the width accordingly
@@ -130,15 +142,15 @@ const SideBar = ({ isSidebarOpen, onSignOut }) => {
       <div
         style={{
           position: "absolute",
-          bottom: "20px",
+          bottom: "10px",
           right: "20px",
           cursor: "pointer",
           fontSize: "24px",
           color: "#333333",
         }}
-        onClick={toggleSettings}
+        onClick={handleCogClick}
       >
-        ⚙️
+        <FaCog className={isCogSpinning ? "spinning" : ""} />
       </div>
     </div>
   );
