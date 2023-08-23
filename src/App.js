@@ -1,22 +1,15 @@
+import React, { useState } from "react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Button, View } from "@aws-amplify/ui-react";
+import SideBar from "./SideBar"; // Importing your custom Sidebar component
 import logo from "./logo.svg";
 import "@aws-amplify/ui-react/styles.css";
-import {
-  withAuthenticator,
-  Button,
-  Heading,
-  Image,
-  View,
-  Card,
-} from "@aws-amplify/ui-react";
-import { useState } from "react"; 
-import { Menu, MenuItem } from '@aws-amplify/ui-react';
-import { SideBar } from './ui-components';
 
 function App({ signOut }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen); 
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
@@ -47,27 +40,7 @@ function App({ signOut }) {
       <View style={{ position: 'absolute', bottom: '1rem', left: '1rem' }}>
         <Button onClick={signOut}>Sign Out</Button>
       </View>
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: isSidebarOpen ? 0 : '-300px', 
-        width: '300px',
-        height: '100%',
-        backgroundColor: '#f0f0f0',
-        transition: 'left 0.3s ease-in-out',
-        boxShadow: '2px 0 10px rgba(0, 0, 0, 0.2)',
-      }}>
-        {/* Sidebar content */}
-        {isSidebarOpen && (
-          <ul style={{ listStyle: 'none', padding: '1rem' }}>
-            <li>Option 1</li>
-            <li>Option 2</li>
-            <li>Option 3</li>
-            <li>Option 4</li>
-            <li>Option 5</li>
-          </ul>
-        )}
-      </div>
+      <SideBar isSidebarOpen={isSidebarOpen} />
     </View>
   );
 }
