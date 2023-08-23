@@ -33,16 +33,51 @@ const SettingsPage = ({ onSignOut }) => {
 };
 
 const MainMenu = () => {
+  const menuOptions = [
+    { text: "Tool 1", link: "#" },
+    { text: "Tool 2", link: "#" },
+    { text: "Tool 3", link: "#" },
+    { text: "Tool 4", link: "#" },
+    { text: "Tool 5", link: "#" },
+  ];
+
   return (
-    <ul style={{ listStyle: "none", padding: "1rem", textAlign: "center" }}>
-      <li style={{ marginBottom: "1rem", fontSize: "1.2rem" }}>Home</li>
-      <li style={{ marginBottom: "1rem", fontSize: "1.2rem" }}>About</li>
-      <li style={{ marginBottom: "1rem", fontSize: "1.2rem" }}>Services</li>
-      <li style={{ marginBottom: "1rem", fontSize: "1.2rem" }}>Portfolio</li>
-      <li style={{ fontSize: "1.2rem" }}>Contact</li>
-      <li style={{ marginTop: "1rem", fontSize: "1.2rem", cursor: "pointer" }}>
-        Settings
-      </li>
+    <ul
+      style={{
+        listStyle: "none",
+        padding: "1rem",
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+      }}
+    >
+      {menuOptions.map((option, index) => (
+        <li
+          key={index}
+          style={{
+            marginBottom: "1rem",
+            fontSize: "1.2rem",
+            cursor: "pointer",
+          }}
+        >
+          <a
+            href={option.link}
+            style={{
+              textDecoration: "none",
+              color: "#333333",
+              borderRadius: "5px",
+              padding: "0.5rem 1rem",
+              border: "1px solid #333333",
+              transition: "background-color 0.3s ease-in-out",
+            }}
+          >
+            {option.text}
+          </a>
+        </li>
+      ))}
     </ul>
   );
 };
@@ -58,29 +93,40 @@ const SideBar = ({ isSidebarOpen, onSignOut }) => {
     <div
       style={{
         position: "fixed",
-        top: 0,
+        bottom: 0,
         left: isSidebarOpen ? 0 : "-300px",
         width: "300px",
         height: "100%",
-        backgroundColor: "#f5f5f5", // Lighter color
+        backgroundColor: "#f5f5f5",
         transition: "left 0.3s ease-in-out",
         boxShadow: "2px 0 10px rgba(0, 0, 0, 0.2)",
-        color: "#333333", // Text color
-        borderRadius: "15px", // More rounded edges
+        color: "#333333",
+        borderRadius: "0 0 15px 15px", // Rounded bottom corners
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: "Inter, sans-serif", // Using Inter font style
+        fontFamily: "Inter, sans-serif",
       }}
     >
-      {/* Sidebar content */}
       {isSidebarOpen && <MainMenu />}
 
-      {/* Show settings page */}
-      {showSettings && <SettingsPage onSignOut={onSignOut} />}
+      <div
+        style={{
+          position: "absolute",
+          bottom: showSettings ? "-300px" : "20px",
+          right: "20px",
+          left: "20px", // Add padding on the left side
+          width: "260px", // Adjust the width accordingly
+          background: "#ffffff",
+          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
+          padding: "1rem",
+          borderRadius: "15px",
+          transform: showSettings ? "translateY(100%)" : "translateY(0)",
+          transition: "transform 0.3s ease-in-out, bottom 0.3s ease-in-out",
+        }}
+      >
+        <SettingsPage onSignOut={onSignOut} />
+      </div>
 
-      {/* Settings icon */}
       <div
         style={{
           position: "absolute",
